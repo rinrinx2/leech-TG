@@ -165,7 +165,7 @@ async def upload_to_gdrive(file_upload, message):
         inline_keyboard.append([pyrogram.InlineKeyboardButton(text="ℹ️FileIndexUrl:", url=f"{tam_link}")])
         inline_keyboard.append([pyrogram.InlineKeyboardButton(text="☁️FileCloudUrl:", url=f"{gau_link}")])
         reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
-        await message.edit_text(f"🤖: {file_upload} has been Uploaded successfully to your cloud 🤒", quote=True, reply_markup=reply_markup)
+        await message.edit_text(f"🤖: {file_upload} has been Uploaded successfully to your cloud 🤒", reply_markup=reply_markup)
         #await message.edit_text(send)
         #await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
         #await message.edit_text(f"""🤖: {file_upload} has been Uploaded successfully to your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FileLink</a>\nℹ️ Direct URL:  <a href="{tam_link}">IndexLink</a>""")
