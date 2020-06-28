@@ -12,6 +12,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
 import asyncio
+import pyrogram
 import os
 import time
 import subprocess
@@ -155,12 +156,16 @@ async def upload_to_gdrive(file_upload, message):
         #tam_link = re.search("(?P<url>https?://[^\s]+)", indexurl).group("url")
         tam_link = requests.utils.requote_uri(f"{indexurl}")
         print(tam_link)
-        send = f'🤖: {file_upload} has been Uploaded successfully to your cloud 🤒'
-        send += f'''\n\n ☁️ Cloud URL: <p><a href="{gau_link}">FileLink</a></p>'''
-        send += f'\n ℹ️ Direct Link: {tam_link}'
+        #send = f'🤖: {file_upload} has been Uploaded successfully to your cloud 🤒'
+        #send += f'''\n\n ☁️ Cloud URL: <p><a href="{gau_link}">FileLink</a></p>'''
+        #send += f'\n ℹ️ Direct Link: {tam_link}'
         #s_tr = '-'*40
-        print(send)
-        await message.edit_text(send)
+        #print(send)
+        inline_keyboard = []
+        inline_keyboard.append([pyrogram.InlineKeyboardButton(text="IndexLink", url=f"{tam_link}")])
+        reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
+        await message.reply_text("help", quote=True, reply_markup=reply_markup)
+        #await message.edit_text(send)
         #await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
         #await message.edit_text(f"""🤖: {file_upload} has been Uploaded successfully to your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FileLink</a>\nℹ️ Direct URL:  <a href="{tam_link}">IndexLink</a>""")
         os.remove(file_upload)
