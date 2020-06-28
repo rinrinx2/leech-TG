@@ -157,7 +157,7 @@ async def upload_to_gdrive(file_upload, message):
         print(tam_link)
         send = f'🤖: {file_upload} has been Uploaded successfully to your cloud 🤒'
         send += f'''\n\n ☁️ Cloud URL: <p><a href="{gau_link}">FileLink</a></p>'''
-        send += f'''\n ℹ️ Direct URL: <p><a href="{tam_link}">IndexLink</a></p>'''
+        send += f'\n ℹ️ Direct Link: {tam_link}'
         #s_tr = '-'*40
         print(send)
         await message.edit_text(send)
