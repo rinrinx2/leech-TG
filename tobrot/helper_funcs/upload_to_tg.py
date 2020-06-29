@@ -162,11 +162,8 @@ async def upload_to_gdrive(file_upload, message):
         #s_tr = '-'*40
         #print(send)
         inline_keyboard = []
-        if INDEX_LINK is not None:
-            try:
-                inline_keyboard.append([pyrogram.InlineKeyboardButton(text="ℹ️FileIndexUrl:", url=f"{tam_link}")])
-            except:
-                pass
+        if INDEX_LINK:
+            inline_keyboard.append([pyrogram.InlineKeyboardButton(text="ℹ️FileIndexUrl:", url=f"{tam_link}")])
         inline_keyboard.append([pyrogram.InlineKeyboardButton(text="☁️FileCloudUrl:", url=f"{gau_link}")])
         reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
         await message.edit_text(f"🤖: {file_upload} has been Uploaded successfully to your cloud 🤒", reply_markup=reply_markup)
